@@ -1,0 +1,40 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "S3ReadIncomingAlertFiles",
+      "Effect": "Allow",
+      "Action": ["s3:GetObject"],
+      "Resource": "arn:aws:s3:::campusguard-alerts-incoming-20220379/*"
+    },
+    {
+      "Sid": "S3MoveAlertFilesWithinIncomingBucket",
+      "Effect": "Allow",
+      "Action": ["s3:PutObject", "s3:DeleteObject"],
+      "Resource": "arn:aws:s3:::campusguard-alerts-incoming-20220379/*"
+    },
+    {
+      "Sid": "S3WriteHistoryLogs",
+      "Effect": "Allow",
+      "Action": ["s3:PutObject"],
+      "Resource": "arn:aws:s3:::campusguard-alerts-history-20220045/*"
+    },
+    {
+      "Sid": "SNSPublishToCampusGuardTopics",
+      "Effect": "Allow",
+      "Action": "sns:Publish",
+      "Resource": [
+        "arn:aws:sns:eu-north-1:716121313235:CampusGuard-Emergency",
+        "arn:aws:sns:eu-north-1:716121313235:CampusGuard-Information",
+        "arn:aws:sns:eu-north-1:716121313235:CampusGuard-Maintenance",
+        "arn:aws:sns:eu-north-1:716121313235:CampusGuard-Test"
+      ]
+    },
+    {
+      "Sid": "CloudWatchLogs",
+      "Effect": "Allow",
+      "Action": ["logs:CreateLogGroup", "logs:CreateLogStream", "logs:PutLogEvents"],
+      "Resource": "*"
+    }
+  ]
+}
