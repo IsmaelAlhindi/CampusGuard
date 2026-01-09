@@ -1,0 +1,5 @@
+{
+  "type": "Emergency",
+  "title": "Evacuate EE102 ELECTRICAL Room",
+  "message": "Fire alarm triggered. Please evacuate calmly using the nearest exit."
+}
